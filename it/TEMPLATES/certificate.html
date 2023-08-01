@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Achievement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 800px;
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .certificate {
+            text-align: center;
+        }
+        .certificate #h2 {
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+        .certificate #p {
+            font-size: 18px;
+        }
+        .signature {
+            margin-top: 40px;
+        }
+        .signature #p {
+            border-top: 2px solid #000;
+            max-width: 200px;
+            margin: 0 auto;
+            padding-top: 5px;
+            
+        }
+        #sign{
+            font-family:courier;
+            margin-left: 320px;
+        }
+        .toolbox-cont{
+    
+        height: 2rem;
+        align-items: center;
+        margin-left: 250px;
+        }
+        .toolbox-color-cont{
+            display: flex;
+             height: 2rem;
+    width: 18rem;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(70, 66, 66);
+        }
+        .color{
+        height:1.5rem;
+        width: 3rem;
+        }
+        .lightpink{
+        background-color: pink;
+        }
+        .lightgreen{
+            background-color: aquamarine; 
+        }
+        .lightblue{
+            background-color: cornflowerblue;   
+        }
+        .lightyellow{
+            background-color: coral;   
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cer">
+   
+        <div class="certificate" >
+            <form id="method="post">
+            {% csrf_token %}
+            <label for="fname" id="h2">Certificate of Achievement</label><br><br>
+            <label for="fname" id="p">This certifies that</label>
+             
+            <h3> <input type="text" name="fname">{{name}}</h3>
+            <label for="fname" id="p">has successfully completed the course</label><br>
+            <h3><input type="text" name="fname"></h3>
+            <label for="fname" id="p">on</label>
+            <input type="date"  name="cdate">
+            </form>
+        </div>
+        <div class="signature">
+            <input type="text" id="sign" name="fname"><br><br>
+            <label for="fname" id="p">signature</label>
+        </div>
+        <div class="toolbox-cont">
+        <div class="toolbox-color-cont">
+        <div class="lightpink color"></div>
+        <div class="lightgreen color"></div>
+        <div class="lightblue color"></div>
+        <div class="lightyellow color"></div>
+        </div>
+    </div>
+    {% comment %} <button type="button" onclick="generatePDF()">Generate PDF</button> {% endcomment %}
+    <button type="submit">Generate PDF</button>
+    {% comment %} <div>
+    <a class="btn btn-info" href="{% url 'pdf_view' %}" target="_blank">View Invoice</a>
+	<a class="btn btn-info"  href="{% url 'pdf_download' %}">Download Invoice</a></div>  {% endcomment %}
+    <script>
+    let body = document.querySelector(".container");
+    let pink = document.querySelector(".lightpink.color");
+    
+    let green = document.querySelector(".lightgreen.color");
+
+     green.addEventListener("click",()=>{
+        body.style.backgroundColor="lightgreen";
+    })
+    let blue = document.querySelector(".lightblue.color");
+     blue.addEventListener("click",()=>{
+        body.style.backgroundColor="lightblue";
+    })
+    let yellow = document.querySelector(".lightyellow.color");
+     yellow.addEventListener("click",()=>{
+        body.style.backgroundColor="coral";
+    })
+     pink.addEventListener("click",()=>{
+        body.style.backgroundColor="lightpink";
+    })
+   
+   
+    </script>
+
+    
+</body>
+</html>
